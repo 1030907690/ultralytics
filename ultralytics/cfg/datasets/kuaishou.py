@@ -9,8 +9,8 @@ model = YOLO("best.pt")
 def train():
     # Train the model
     train_results = model.train(
-        data="dinosaur.yaml",  # path to dataset YAML
-        epochs=200,  # number of training epochs
+        data="kuaishou.yaml",  # path to dataset YAML
+        epochs=100,  # number of training epochs
         imgsz=640,  # training image size
         device="cpu",  # device to run on, i.e. device=0 or device=0,1,2,3 or device=cpu
         workers=6,
@@ -23,7 +23,7 @@ def validation():
 
 def parse():
     # Perform object detection on an image
-    path = "D:/work/self/ultralytics/dinosaur.png"
+    path = "D:/work/self/ultralytics/ultralytics/cfg/datasets/kuaishou/train/images/d18b7ab9-1.png"
     # image = cv2.imread(path)
     # cropped_frame = image[0:456, 220:817]
     results = model(path)
@@ -45,7 +45,7 @@ def parse():
                 tuili_jieguo.append(obj)
 
                 print(obj)
-    # results[0].show()
+    results[0].show()
 
 def export_ncnn():
     #Export the model to ONNX format
